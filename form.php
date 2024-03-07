@@ -14,18 +14,18 @@
         <div class="container">
             <h1>Create new product</h1>
             <a href="/list.php"><< Back to list</a>
-            <form action="/list.php" method="Post">
+            <form action="/create.php" method="post">
                 <div class="mb-3">
                     <label class="form-label">Name</label>
                     <input type="text" class="form-control" name="name" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Price</label>
-                    <input type="text" class="form-control" name="price" />
+                    <input type="number" class="form-control" name="price" />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Image</label>
-                    <input type="text" class="form-control" name="name" />
+                    <label class="form-label">Qty</label>
+                    <input type="number" class="form-control" name="qty" />
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
