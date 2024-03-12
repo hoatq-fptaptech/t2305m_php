@@ -1,3 +1,24 @@
+<?php
+$host = "localhost";
+$user = "root";
+$pwd = "root";
+$db = "t2305m_php";
+
+$conn = new mysqli($host,$user,$pwd,$db);
+if($conn->error){
+    die("Connection refuse!");
+}
+// query
+$sql = "select id,name from categories";
+$result = $conn->query($sql);
+
+$data = [];
+if($result->num_rows > 0){ // kiểm tra xem có dữ liệu row nào trong table hay ko
+    while ($row = $result->fetch_assoc()){
+        $data[] = $row; // $data[i] = $row  // $data.push($row) $data.add($row)
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,6 +47,14 @@
                 <div class="mb-3">
                     <label class="form-label">Qty</label>
                     <input type="number" class="form-control" name="qty" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select name="category_id" class="form-control">
+                        <?php foreach ($data as $item):?>
+                         <option value="<?php echo $item["id"];?>"><?php echo $item["name"];?></option>
+                        <?php endforeach;?>
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

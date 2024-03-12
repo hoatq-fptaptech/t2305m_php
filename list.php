@@ -10,7 +10,8 @@
        die("Connection refuse!");
    }
     // query
-    $sql = "select * from products";
+    $sql = "select products.*,categories.name as category_name from products 
+                left join categories on products.category_id = categories.id";
    $result = $conn->query($sql);
 
    $data = [];
@@ -43,6 +44,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Price</th>
                     <th scope="col">Qty</th>
+                    <th scope="col">Category</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -52,6 +54,7 @@
                     <td><?php echo $item["name"]; ?></td>
                     <td><?php echo $item["price"]; ?></td>
                     <td><?php echo $item["qty"]; ?></td>
+                    <td><?php echo $item["category_name"]; ?></td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
