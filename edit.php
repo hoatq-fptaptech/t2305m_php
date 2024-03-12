@@ -18,6 +18,17 @@ if($result->num_rows > 0){ // kiểm tra xem có dữ liệu row nào trong tabl
         $data[] = $row; // $data[i] = $row  // $data.push($row) $data.add($row)
     }
 }
+
+// find product to edit
+$id = $_GET["id"];
+$product = null;
+$sql_find = "select * from products where id = $id";
+$result = $conn->query($sql_find);
+if($result->num_rows == 0){
+    echo "<h1>404 Not found </h1>";die();
+}
+$product = $result->fetch_assoc();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -35,24 +46,25 @@ if($result->num_rows > 0){ // kiểm tra xem có dữ liệu row nào trong tabl
     <div class="container">
         <h1>Edit product</h1>
         <a href="/list.php"><< Back to list</a>
-        <form action="/create.php" method="post">
+        <form action="/update.php?id=<?php echo $product["id"] ?>" method="post">
             <div class="mb-3">
                 <label class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" />
+                <input value="<?php echo $product["name"];?>" type="text" class="form-control" name="name" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Price</label>
-                <input type="number" class="form-control" name="price" />
+                <input value="<?php echo $product["price"];?>" type="number" class="form-control" name="price" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Qty</label>
-                <input type="number" class="form-control" name="qty" />
+                <input value="<?php echo $product["qty"];?>" type="number" class="form-control" name="qty" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Category</label>
                 <select name="category_id" class="form-control">
                     <?php foreach ($data as $item):?>
-                        <option value="<?php echo $item["id"];?>"><?php echo $item["name"];?></option>
+                        <option <?php if($product["category_id"] == $item["id"]): ?>selected <?php endif; ?>
+                                value="<?php echo $item["id"];?>"><?php echo $item["name"];?></option>
                     <?php endforeach;?>
                 </select>
             </div>

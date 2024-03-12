@@ -56,7 +56,10 @@
                     <td><?php echo $item["price"]; ?></td>
                     <td><?php echo $item["qty"]; ?></td>
                     <td><?php echo $item["category_name"]; ?></td>
-                    <td><a class="btn btn-primary" href="/edit.php">Edit</a> </td>
+                    <td>
+                        <a class="btn btn-primary" href="/edit.php?id=<?php echo $item["id"] ?>">Edit</a>
+                        <a class="btn btn-danger" href="#">Delete</a>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
