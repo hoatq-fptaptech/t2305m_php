@@ -45,6 +45,7 @@
                     <th scope="col">Price</th>
                     <th scope="col">Qty</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -55,6 +56,7 @@
                     <td><?php echo $item["price"]; ?></td>
                     <td><?php echo $item["qty"]; ?></td>
                     <td><?php echo $item["category_name"]; ?></td>
+                    <td><a class="btn btn-primary" href="/edit.php">Edit</a> </td>
                 </tr>
                 <?php endforeach; ?>
                 </tbody>
