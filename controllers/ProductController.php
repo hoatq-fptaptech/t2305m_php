@@ -1,5 +1,6 @@
 <?php
 include_once("database.php");
+include_once("models/Product.php");
 class ProductController{
     public function action(){
         $action = isset($_GET["action"])?$_GET["action"]:"/";
@@ -12,11 +13,7 @@ class ProductController{
     }
 
     public function all(){ // list all product
-        $result = queryDB("select * from products");
-        $data = [];
-        while ($row = $result->fetch_assoc()){
-            $data[] = $row;
-        }
+        $data = Product::all();
         include_once("views/products.php");
     }
 

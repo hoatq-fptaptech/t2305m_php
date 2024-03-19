@@ -28,11 +28,11 @@
             <tbody>
             <?php  foreach ($data as $item): ?>
                 <tr>
-                    <th scope="row"><?php echo $item["id"]; ?></th>
-                    <td><?php echo $item["name"]; ?></td>
-                    <td><?php echo $item["price"]; ?></td>
-                    <td><?php echo $item["qty"]; ?></td>
-                    <td><?php echo $item["category_name"]; ?></td>
+                    <th scope="row"><?php echo $item->id; ?></th>
+                    <td><?php echo $item->name; ?></td>
+                    <td><?php echo $item->price; ?></td>
+                    <td><?php echo $item->qty; ?></td>
+                    <td><?php echo $item->category_id; ?></td>
                     <td>
                         <a class="btn btn-primary" href="/edit.php?id=<?php echo $item["id"] ?>">Edit</a>
                         <a class="btn btn-danger" href="#">Delete</a>
